@@ -1,0 +1,57 @@
+{
+  "name": "gitcommon",
+  "version": "1.0.1",
+  "description": "A simple git cli tool",
+  "main": "index.js",
+  "scripts": {
+    "clear": "rimraf bin",
+    "build": "npm run clear && ./node_modules/.bin/babel --out-dir bin src",
+    "build:watch": "npm run build -- --watch",
+    "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --reporter progress",
+    "test:tdd": "npm run test -- --watch"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "gitcommon": "bin/main.js"
+  },
+  "nyc": {
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "tests/**"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanccprogramador/gitcommon.git"
+  },
+  "keywords": [
+    "cli",
+    "git"
+  ],
+  "author": "Yan Christoffer <yandepaula@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yanccprogramador/gitutils/issues"
+  },
+  "homepage": "https://github.com/yanccprogramador/gitutils#readme",
+  "dependencies": {
+    "babel-preset-env": "^1.6.1",
+    "commander": "^2.14.1",
+    "simple-git": "^1.91.0"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
+    "editorconfig": "^0.15.0",
+    "mocha": "^5.0.1",
+    "nyc": "^11.4.1",
+    "sinon": "^4.4.1",
+    "sinon-chai": "^2.14.0"
+  }
+}
