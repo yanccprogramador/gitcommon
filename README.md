@@ -29,6 +29,14 @@ Usage: gitcommon [options]
     -h, --help               output usage information
 
 ```
+##Useful informations
+```
+  When you use commit, in git command line you use git add . git commit -m <message> and git push
+
+  When you use pull , in git command line you use only git pull
+
+  When you use init, in git command line you use git init git add . git commit -m "initial commit" git add remote origin <repo> and git push
+  ```
 
 ## Contributing
 
