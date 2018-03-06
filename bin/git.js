@@ -9,11 +9,12 @@ function commitPush() {
   var options = arguments[3];
 
   return gitsimple.add('.', function () {
-    gitsimple.commit(commitmessage, function () {
+    gitsimple.commit(commitmessage, function (err, res) {
+      if (err) console.error(err);return;
       if (options) gitsimple.push(remote, branch, options, function () {
-        return "add commit and push done";
+        console.log("add commit and push done");
       });else gitsimple.push(remote, branch, function () {
-        return "add commit and push done";
+        console.log("add commit and push done");
       });
     });
   });
@@ -24,7 +25,7 @@ function pull() {
   var branch = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "master";
 
   return gitsimple.pull(remote, branch, function (error, success) {
-    if (error) console.log(error);
+    if (error) console.log(error);return;
 
     console.log('pull done');
   });
@@ -33,10 +34,12 @@ function pull() {
 function initializeRepo(repo) {
   return gitsimple.init(function () {
     gitsimple.add('.', function () {
-      gitsimple.commit('initial commit ', function () {
+      gitsimple.commit('initial commit ', function (err, res) {
+        if (err) console.error(err);return;
         gitsimple.addRemote('origin', repo, function () {
-          gitsimple.push('origin', 'master', '-u', function () {
-            return "successful init repository";
+          gitsimple.push('origin', 'master', '-u', function (err, res) {
+            if (err) console.error(err);return;
+            console.log("successful init repository");
           });
         });
       });
