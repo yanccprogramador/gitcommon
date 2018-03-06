@@ -1,10 +1,12 @@
 const expect = require('chai').expect;
 const sinon= require('sinon');
+const sinonChai= require('sinon-chai');
+const chai=require('chai');
 const exec = require('child_process').exec;
 const gitUtils = './src/main.js';
 
 const git= require('../src/git');
-
+chai.use(sinonChai);
 
 describe('Git functions', () => {
   let consoleStub;
@@ -12,7 +14,7 @@ describe('Git functions', () => {
     consoleStub= sinon.stub(console,'log')
   });
   afterEach(()=>{
-    consoleStub.restore()
+    console.log.restore()
   });
   it('should exist commitPush function',
     () => {
