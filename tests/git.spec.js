@@ -31,13 +31,13 @@ describe('Git functions', () => {
     it(`should returns pull done when --pull args passed`,
     () => {
       exec(`${gitUtils} --pull`,(error,stdout,stderr)=>{
-         expect(stdout.replace('\n','')).to.be.eql('pull done');
+         expect(stdout.replace('\n','')).to.contains('pull done');
       });
     });
     it(`should returns add commit and push done when --c args passed`,
     () => {
       exec(`${gitUtils} -c`,(error,stdout,stderr)=>{
-         expect(stdout.replace('\n','')).to.be.eql('add commit and push done');
+         expect(stdout.replace('\n','')).to.be.contains('add commit and push done');
       });
     });
 })
