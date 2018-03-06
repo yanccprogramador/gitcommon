@@ -4,9 +4,6 @@ const gitsimple = require('simple-git')('.');
 function commitPush(commitmessage = "commit with gitutils", remote = "origin", branch = "master", options) {
   return gitsimple.add('.', () => {
     gitsimple.commit(commitmessage, () => {
-      if (err) console.error(err);return;
-
-
       if (options)
           gitsimple.push(remote, branch, options, () => {
             console.log("add commit and push done");
@@ -32,8 +29,6 @@ function initializeRepo(repo) {
   return gitsimple.init(() => {
     gitsimple.add('.', () => {
       gitsimple.commit('initial commit ', () => {
-        if (err) console.error(err);return;
-
         gitsimple.addRemote('origin', repo, () => {
           gitsimple.push('origin', 'master', '-u', (err, res) => {
             if (err) console.error(err);return;
