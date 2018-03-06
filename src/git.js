@@ -2,7 +2,7 @@ const gitsimple = require('simple-git')('.');
 
 
 function commitPush(commitmessage = "commit with gitutils", remote = "origin", branch = "master", options) {
-  return gitsimple.add('.', () => {
+   gitsimple.add('.', () => {
     gitsimple.commit(commitmessage, (err, res) => {
       if (err) console.error(err);return;
       if (options)
@@ -19,7 +19,7 @@ function commitPush(commitmessage = "commit with gitutils", remote = "origin", b
 }
 
 function pull(remote = "origin", branch = "master") {
-  return gitsimple.pull(remote, branch, (error, success) => {
+   gitsimple.pull(remote, branch, (error, success) => {
     if (error) console.log(error);return;
 
     console.log('pull done');
@@ -27,7 +27,7 @@ function pull(remote = "origin", branch = "master") {
 }
 
 function initializeRepo(repo) {
-  return gitsimple.init(() => {
+   gitsimple.init(() => {
     gitsimple.add('.', () => {
       gitsimple.commit('initial commit ', (err, res) => {
         if (err) console.error(err);return;
