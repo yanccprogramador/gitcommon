@@ -18,9 +18,7 @@ function commitPush(commitmessage = "commit with gitutils", remote = "origin", b
 }
 
 function pull(remote = "origin", branch = "master") {
-  return gitsimple.pull(remote, branch, (error, success) => {
-    if (error) console.log(error);return;
-
+  return gitsimple.pull(remote, branch, () => {
     console.log('pull done');
   });
 }
