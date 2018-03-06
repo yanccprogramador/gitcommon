@@ -36,7 +36,7 @@ describe('Git functions', () => {
          expect(stdout.replace('\n','')).to.contains('pull done');
       });
     });
-    it(`should returns add commit and push done when --c args passed`,
+    it(`should returns add commit and push done when -c args passed`,
     () => {
       exec(`${gitUtils} -c`,(error,stdout,stderr)=>{
          expect(stdout.replace('\n','')).to.be.contains('add commit and push done');
