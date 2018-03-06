@@ -3,15 +3,16 @@ const gitsimple = require('simple-git')('.');
 
 function commitPush(commitmessage = "commit with gitutils", remote = "origin", branch = "master", options) {
   return gitsimple.add('.', () => {
-    gitsimple.commit(commitmessage, () => {
+    gitsimple.commit(commitmessage, (err, res) => {
+      if (err) console.error(err);return;
       if (options)
-        gitsimple.push(remote, branch, options, () => {
-          console.log("add commit and push done");
-        })
-      else
-        gitsimple.push(remote, branch, () => {
-          console.log("add commit and push done");
-        })
+          gitsimple.push(remote, branch, options, () => {
+            console.log("add commit and push done");
+          })
+        else
+          gitsimple.push(remote, branch, () => {
+            console.log("add commit and push done");
+          })
     });
 
   });
@@ -19,7 +20,7 @@ function commitPush(commitmessage = "commit with gitutils", remote = "origin", b
 
 function pull(remote = "origin", branch = "master") {
   return gitsimple.pull(remote, branch, (error, success) => {
-    if (error) console.log(error)
+    if (error) console.log(error);return;
 
     console.log('pull done');
   });
@@ -28,10 +29,12 @@ function pull(remote = "origin", branch = "master") {
 function initializeRepo(repo) {
   return gitsimple.init(() => {
     gitsimple.add('.', () => {
-      gitsimple.commit('initial commit ', () => {
+      gitsimple.commit('initial commit ', (err, res) => {
+        if (err) console.error(err);return;
         gitsimple.addRemote('origin', repo, () => {
-          gitsimple.push('origin', 'master', '-u', () => {
-            console.log ("successful init repository");
+          gitsimple.push('origin', 'master', '-u', (err, res) => {
+            if (err) console.error(err);return;
+            console.log("successful init repository");
           })
         })
       });
