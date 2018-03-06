@@ -11,7 +11,7 @@ chai.use(sinonChai);
 describe('Git functions', () => {
   let consoleStub;
   beforeEach(()=>{
-    consoleStub= sinon.stub(console,'log')
+    consoleStub= sinon.stub(console,'log');
   });
   afterEach(()=>{
     console.log.restore()
