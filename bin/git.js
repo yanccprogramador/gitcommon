@@ -9,8 +9,7 @@ function commitPush() {
   var options = arguments[3];
 
   return gitsimple.add('.', function () {
-    gitsimple.commit(commitmessage, function (err, res) {
-      if (err) console.error(err);return;
+    gitsimple.commit(commitmessage, function () {
       if (options) gitsimple.push(remote, branch, options, function () {
         console.log("add commit and push done");
       });else gitsimple.push(remote, branch, function () {
@@ -24,9 +23,7 @@ function pull() {
   var remote = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "origin";
   var branch = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "master";
 
-  return gitsimple.pull(remote, branch, function (error, success) {
-    if (error) console.log(error);return;
-
+  return gitsimple.pull(remote, branch, function () {
     console.log('pull done');
   });
 }
@@ -34,11 +31,11 @@ function pull() {
 function initializeRepo(repo) {
   return gitsimple.init(function () {
     gitsimple.add('.', function () {
-      gitsimple.commit('initial commit ', function (err, res) {
-        if (err) console.error(err);return;
+      gitsimple.commit('initial commit ', function () {
         gitsimple.addRemote('origin', repo, function () {
           gitsimple.push('origin', 'master', '-u', function (err, res) {
             if (err) console.error(err);return;
+
             console.log("successful init repository");
           });
         });
