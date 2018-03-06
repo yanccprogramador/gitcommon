@@ -14,7 +14,7 @@ describe('Git functions', () => {
     consoleStub= sinon.stub(console,'log');
   });
   afterEach(()=>{
-    console.log.restore()
+    console.log.restore();
   });
   it('should exist commitPush function',
     () => {
