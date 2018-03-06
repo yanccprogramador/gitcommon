@@ -40,10 +40,4 @@ describe('Git functions', () => {
          expect(stdout.replace('\n','')).to.be.eql('add commit and push done');
       });
     });
-    it(`should returns successful init repository when -I args passed`,
-    () => {
-      exec(`${gitUtils} -I`,(error,stdout,stderr)=>{
-         expect(stdout.replace('\n','')).to.be.eql('successful init repository');
-      });
-    });
 })
