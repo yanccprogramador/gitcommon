@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-
+const sinon= require('sinon');
 const exec = require('child_process').exec;
 const gitUtils = './src/main.js';
 const pkg = require('../package.json');

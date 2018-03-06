@@ -6,11 +6,11 @@ function commitPush(commitmessage = "commit with gitutils", remote = "origin", b
     gitsimple.commit(commitmessage, () => {
       if (options)
         gitsimple.push(remote, branch, options, () => {
-          return "add commit and push done";
+          console.log("add commit and push done");
         })
       else
         gitsimple.push(remote, branch, () => {
-          return "add commit and push done";
+          console.log("add commit and push done");
         })
     });
 
@@ -31,7 +31,7 @@ function initializeRepo(repo) {
       gitsimple.commit('initial commit ', () => {
         gitsimple.addRemote('origin', repo, () => {
           gitsimple.push('origin', 'master', '-u', () => {
-            return "successful init repository";
+            console.log ("successful init repository");
           })
         })
       });
